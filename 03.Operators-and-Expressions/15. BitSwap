@@ -1,0 +1,53 @@
+/*Write a program first reads 3 numbers 
+n, p, q and k and than swaps bits {p, p+1, …, p+k-1} 
+with bits {q, q+1, …, q+k-1} of n. 
+Print the resulting integer on the console.
+*/
+using System;
+
+namespace BitSwap
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            uint n = uint.Parse(Console.ReadLine());
+            int p = int.Parse(Console.ReadLine());
+            int q = int.Parse(Console.ReadLine());
+            int end = int.Parse(Console.ReadLine());
+            int count = 0;
+
+            for (int i = p; i < p + end; i++)
+            {
+                int mask = 1 << i;
+                int firstBit = (int)((n & mask) >> i);
+
+                mask = 1 << q + count;
+                int secondBit = (int)((n & mask) >> q + count);
+
+                if (firstBit == 0)
+                {
+                    mask = ~(1 << q + count);
+                    n = (uint)(n & mask);
+                }
+                else if (firstBit == 1)
+                {
+                    mask = 1 << q + count;
+                    n = (uint)(n | mask);
+                }
+                if (secondBit == 0)
+                {
+                    mask = ~(1 << i);
+                    n = (uint)(n & mask);
+                }
+                else if (secondBit == 1)
+                {
+                    mask = 1 << i;
+                    n = (uint)(n | mask);
+                }
+                count++;
+            }
+            Console.WriteLine(n);
+        }
+    }
+}
