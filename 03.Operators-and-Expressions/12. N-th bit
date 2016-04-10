@@ -1,0 +1,27 @@
+/*Write a program that reads from the console 
+two integer numbers P and N and prints on the
+console the value of P's N-th bit. 
+    N will be a positive integer and always smaller than 55.
+    0 <= P <= 255
+    Time limit: 0.1s
+    Memory limit: 16MB
+
+*/
+using System;
+
+class NthBit
+{
+    static void Main(string[] args)
+    {
+        long P = long.Parse(Console.ReadLine());
+        int N = int.Parse(Console.ReadLine());
+        while ((N < 0 || N > 55) || (P < 0) || (P > 36028797018963968))
+        {
+            N = int.Parse(Console.ReadLine());
+        }
+        int mask = 1 << N;
+        long pAndMask = P & mask;
+        long bit = pAndMask >> N;
+        Console.WriteLine(bit);
+    }
+}
