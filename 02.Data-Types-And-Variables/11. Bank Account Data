@@ -1,0 +1,56 @@
+/*A bank account has a holder name 
+(first name, middle name and last name), 
+available amount of money (balance), bank name, 
+IBAN, 3 credit card numbers associated with the account.
+Declare the variables needed to keep the information 
+for a single bank account using the appropriate data 
+types and descriptive names.
+*/
+using System;
+
+class BankAccountData
+{
+    static void Main(string[] args)
+    {
+        string firstName;
+        string middleName;
+        string lastName;
+        decimal balance;
+        string bankName;
+        string iBAN;
+        long creditCard1;
+        long creditCard2;
+        long creditCard3;
+
+        Console.WriteLine("Enter first name: ");
+        firstName = Console.ReadLine();
+        Console.WriteLine("Enter middle name: ");
+        middleName = Console.ReadLine();
+        Console.WriteLine("Enter last name: ");
+        lastName = Console.ReadLine();
+        Console.WriteLine("Enter balance: ");
+        balance = decimal.Parse(Console.ReadLine());
+        Console.WriteLine("Enter bank name: ");
+        bankName = Console.ReadLine();
+        Console.WriteLine("Enter IBAN: ");
+        iBAN = Console.ReadLine();
+        Console.WriteLine("Enter credit card 1: ");
+        creditCard1 = long.Parse(Console.ReadLine());
+        Console.WriteLine("Enter credit card 2: ");
+        creditCard2 = long.Parse(Console.ReadLine());
+        Console.WriteLine("Enter credit card 3: ");
+        creditCard3 = long.Parse(Console.ReadLine());
+
+        Console.WriteLine("\n***FULL INFORMATION OF THE BANK ACCOUNT***\n");
+        Console.WriteLine("First name: " + firstName);
+        Console.WriteLine("Middle name: " + middleName);
+        Console.WriteLine("Last name: " + lastName);
+        Console.WriteLine("Balance: " + balance);
+        Console.WriteLine("Bank name: " + bankName);
+        Console.WriteLine("IBAN: " + iBAN);
+        Console.WriteLine("Credit Card 1: " + creditCard1);
+        Console.WriteLine("Credit Card 2: " + creditCard2);
+        Console.WriteLine("Credit Card 3: " + creditCard3);
+    }
+}
+
