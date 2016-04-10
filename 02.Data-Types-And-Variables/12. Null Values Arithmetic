@@ -1,0 +1,24 @@
+/*Create a program that assigns null values to an integer and to a double variable.
+Try to print these variables at the console.
+Try to add some number or the null literal to these variables and print the result.
+*/
+using System;
+class NullValuesArithmetic
+{
+    static void Main(string[] args)
+    {
+        int? intNullValue = null;
+        double? doubleNullValue = null;
+        Console.WriteLine("int with null values : {0}", intNullValue);
+        Console.WriteLine("double with null values : {0}", doubleNullValue);
+        intNullValue = 0;
+        doubleNullValue = 0.0;
+        Console.WriteLine("int with null literal : {0}", intNullValue);
+        Console.WriteLine("double with null literal : {0}", doubleNullValue);
+        intNullValue = 3;
+        doubleNullValue = 3.3;
+        Console.WriteLine("int with value '3' : {0}", intNullValue);
+        Console.WriteLine("double with value '3.3' : {0}", doubleNullValue);
+    }
+}
+
