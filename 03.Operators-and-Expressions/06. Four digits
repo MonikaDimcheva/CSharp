@@ -1,0 +1,41 @@
+/*Write a program that takes as input a four-digit number
+in format abcd (e.g. 2011) and performs the following:
+1.Calculates the sum of the digits 
+(in our example 2 + 0 + 1 + 1 = 4) and prints it on the console.
+2.Prints on the console the number in reversed 
+order: dcba (in our example 1102) and prints the reversed number.
+3.Puts the last digit in the first 
+position: dabc (in our example 1201) and prints the result.
+4.Exchanges the second and the third 
+digits: acbd (in our example 2101) and prints the result.
+*/
+using System;
+class FourDigits
+{
+    static void Main(string[] args)
+    {
+        string input = Console.ReadLine();
+        int inputNumber = int.Parse(input);
+        while (inputNumber < 1000 || inputNumber > 9999)
+        {
+            input = Console.ReadLine();
+            inputNumber = int.Parse(input);
+        }
+        string _secondDigit = input.Substring(1);
+        string _thirdDigit = input.Substring(2);
+        byte firstDigit = byte.Parse(input.Remove(1));
+        byte secondDigit = byte.Parse(_secondDigit.Remove(1));
+        byte thirdDigit = byte.Parse(_thirdDigit.Remove(1));
+        byte forthDigit = byte.Parse(input.Substring(3));
+
+        byte sum = (byte)(firstDigit + secondDigit + thirdDigit + forthDigit);
+        Console.WriteLine(sum);
+        char[] a = input.ToCharArray();
+        for (int i = 3; i >= 0; i--)
+        {
+            Console.Write(a[i]);
+        }
+        Console.WriteLine("\n{0}{1}{2}{3}", forthDigit, firstDigit, secondDigit, thirdDigit);
+        Console.WriteLine("{0}{1}{2}{3}", firstDigit, thirdDigit, secondDigit, forthDigit);
+    }
+}
