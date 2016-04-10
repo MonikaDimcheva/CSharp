@@ -1,0 +1,17 @@
+//Write a program that prints an isosceles triangle of 9 copyright symbols ©
+using System;
+
+class IsoscelesTriangle
+{
+    static void Main(string[] args)
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        char symbol = '\u00A9';
+        char space = '\u0020';
+        Console.WriteLine("{1}{1}{1}{0}{1}{1}{1}", symbol, space);
+        Console.WriteLine("{1}{1}{0}{1}{0}{1}{1}", symbol, space);
+        Console.WriteLine("{1}{0}{1}{1}{1}{0}{1}", symbol, space);
+        Console.WriteLine("{0}{1}{0}{1}{0}{1}{0}", symbol, space);
+    }
+}
+
