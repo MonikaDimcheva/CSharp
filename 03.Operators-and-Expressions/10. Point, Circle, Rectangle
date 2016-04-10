@@ -1,0 +1,47 @@
+/*Write a program that reads a pair of coordinates 
+x and y and uses an expression to checks for given 
+point (x, y) if it is within the circle K({1, 1}, 1.5) 
+and out of the rectangle R(top=1, left=-1, width=6, height=2).
+Output-Print inside circle if the point
+is inside the circle and outside circle if it's outside.
+Then print a single whitespace followed by inside rectangle 
+if the point is inside the rectangle and outside rectangle otherwise. 
+See the sample tests for a visual description.
+*/
+using System;
+class PointCircleRectangle
+{
+    static void Main(string[] args)
+    {
+        double x = double.Parse(Console.ReadLine());
+        double y = double.Parse(Console.ReadLine());
+        double centerX = 1;
+        double centerY = 1;
+        double radius = 1.5;
+
+        double top = 1;
+        double left = -1;
+        double width = 6;
+        double height = 2;
+
+        if ((((x - centerX) * (x - centerX)) + ((y - centerY) * (y - centerY))) <= (radius * radius))
+        {
+            Console.Write("inside circle ");
+        }
+        else if ((((x - centerX) * (x - centerX)) + ((y - centerY) * (y - centerY))) > (radius * radius))
+        {
+            Console.Write("outside circle ");
+        }
+
+        if (((x < left) || (x > (width - 1))) || (((y > top) || (y < (height - 3)))))
+        {
+            Console.WriteLine("outside rectangle");
+        }
+
+        else if (((x > left) || (x < (width - 1))) || (((y < top) || (y > (height - 3)))))
+        {
+            Console.WriteLine("inside rectangle");
+        }
+    }
+}
+
