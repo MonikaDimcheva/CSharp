@@ -1,0 +1,182 @@
+using System;
+
+class SpiralMatrix
+{
+    static void Main(string[] args)
+    {
+        int number = int.Parse(Console.ReadLine());
+        int[,] spiralMatrix = new int[number, number];
+        int row = 0;
+        int col = 0;
+        string direction = "right";
+        int maxRotations = number * number;
+
+        for (int i = 1; i <= maxRotations; i++)
+        {
+            if ((direction == "right") && (col > number - 1 || spiralMatrix[row, col] != 0))
+            {
+                direction = "down";
+                col--;
+                row++;
+            }
+            else if ((direction == "down") && (row > number - 1 || spiralMatrix[row, col] != 0))
+            {
+                direction = "left";
+                row--;
+                col--;
+            }
+            else if ((direction == "left") && (col < 0 || spiralMatrix[row, col] != 0))
+            {
+                direction = "up";
+                col++;
+                row--;
+            }
+            else if ((direction == "up") && (row < 0 || spiralMatrix[row, col] != 0))
+            {
+                direction = "right";
+                row++;
+                col++;
+            }
+            spiralMatrix[row, col] = i;
+
+            if (direction == "right")
+            {
+                col++;
+            }
+            else if (direction == "down")
+            {
+                row++;
+            }
+            else if (direction == "left")
+            {
+                col--;
+            }
+            else if (direction == "up")
+            {
+                row--;
+            }
+        }
+        for (int r = 0; r < number; r++)
+        {
+            for (int m = 0; m < number; m++)
+            {
+                Console.Write("{0} ",spiralMatrix[r, m]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
+/*
+using System;
+
+
+
+public class MatrixSpiral
+
+{
+
+    public static void Main()
+
+    {
+
+        Console.Write("N = ");
+
+        int n = int.Parse(Console.ReadLine());
+
+        int[,] matrix = new int[n, n];
+
+
+
+        FillMatrix(matrix, n);
+
+
+
+        PrintMatrix(matrix, n);
+
+    }
+
+
+
+    private static void FillMatrix(int[,] matrix, int n)
+
+    {
+
+        int positionX = n / 2; // The middle of the matrix
+
+        int positionY = n % 2 == 0 ? (n / 2) - 1 : (n / 2);
+
+
+
+        int direction = 0; // The initial direction is "down"
+
+        int stepsCount = 1; // Perform 1 step in current direction
+
+        int stepPosition = 0; // 0 steps already performed
+
+        int stepChange = 0; // Steps count changes after 2 steps
+        for (int i = 0; i < n * n; i++)
+        {
+            matrix[positionY, positionX] = i;
+
+            if (stepPosition < stepsCount)
+            {
+                stepPosition++;
+            }
+            else
+            {
+                stepPosition = 1;
+                if (stepChange == 1)
+                {
+                    stepsCount++;
+                }
+                stepChange = (stepChange + 1) % 2;
+
+                direction = (direction + 1) % 4;
+            }
+
+            switch (direction)
+
+            {
+                case 0:
+
+                    positionY++;
+
+                    break;
+
+                case 1:
+
+                    positionX--;
+
+                    break;
+
+                case 2:
+
+                    positionY--;
+
+                    break;
+
+                case 3:
+
+                    positionX++;
+
+                    break;
+            }
+        }
+    }
+    private static void PrintMatrix(int[,] matrix, int n)
+
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Console.Write("{0,3}", matrix[i, j]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+
+
+*/
