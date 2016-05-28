@@ -1,0 +1,44 @@
+/*Write a program that calculates the 
+greatest common divisor (GCD) of given two integers A and B.
+    Use the Euclidean algorithm (find it in Internet).
+Input
+    On the first and only line of the input you
+    will receive the 2 integers A and B, separated by a whitespace.
+Output
+    Output a single number - the GCD of the numbers A and B.
+Constraints
+    The numbers A and B will always be valid integers 
+    in the range [2, 500].
+    Time limit: 0.1s
+    Memory limit: 16MB
+*/
+using System;
+
+class GCD
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine(2%1);
+        string numbers = Console.ReadLine();
+        string[] arrayNumbers = numbers.Split(' ');
+        int[] array = new int[arrayNumbers.Length];
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = Convert.ToInt32(arrayNumbers[i]);
+        }
+
+        Array.Sort(array);
+
+        int biggerNum = Math.Abs(array[1]);
+        int smallerNum = Math.Abs(array[0]);
+
+        while (smallerNum != 0)
+        {
+            int temp = smallerNum;
+            smallerNum = biggerNum % smallerNum;
+            biggerNum = temp;
+        }
+        Console.WriteLine(biggerNum);
+    }
+}
+
