@@ -1,0 +1,125 @@
+/*You are given N integers (given in a single line,
+separated by a space).
+1.Write a program that checks whether the product of 
+the odd elements is equal to the product of the even elements.
+2.Elements are counted from 1 to N, so the first element 
+is odd, the second is even, etc.
+    Input
+1.On the first line you will receive the number N
+2.On the second line you will receive N numbers separated 
+by a whitespace
+    Output
+1.If the two products are equal, output a string in the format
+"yes PRODUCT_VALUE", otherwise write on the console 
+"no ODD_PRODUCT_VALUE EVEN_PRODUCT_VALUE"
+    Constraints
+1.N will always be a valid integer number in the range [4, 50]
+2.All input numbers from the second line will also be valid integers
+3.Time limit: 0.1s
+4.Memory limit: 16MB
+*/
+using System;
+using System.Linq;
+using System.Numerics;
+
+class OddAndEvenProduct
+{
+    static void Main(string[] args)
+    {
+        int number = int.Parse(Console.ReadLine());
+        string numbers = Console.ReadLine();
+        int[] array = numbers.Split(new char[] { ' ' },
+            StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+        BigInteger oddProduct = 1;
+        BigInteger evenProduct = 1;
+
+        for (int count = 0; count < number; count += 2)
+        {
+            oddProduct *= array[count];
+        }
+        for (int count = 1; count < number; count += 2)
+        {
+            evenProduct *= array[count];
+        }
+        string output = oddProduct == evenProduct ? string.Format("yes {0}", evenProduct) : string.Format("no {0} {1}", oddProduct, evenProduct);
+        Console.WriteLine(output);
+    }
+}
+//using System;
+//using System.Numerics;
+
+//class OddAndEvenProduct
+//{
+//    static void Main(string[] args)
+//    {
+//        int number = int.Parse(Console.ReadLine());
+//        while (number <= 4 || number >= 50)
+//        {
+//            number = int.Parse(Console.ReadLine());
+//        }
+//        string[] array = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//        BigInteger oddProduct = 1;
+//        BigInteger evenProduct = 1;
+//        for (int count = 0; count < number; count += 2)
+//        {
+//            oddProduct *= int.Parse(array[count]);
+//        }
+//        for (int count = 1; count < number; count += 2)
+//        {
+//            evenProduct *= int.Parse(array[count]);
+//        }
+
+//        if (evenProduct == oddProduct)
+//        {
+//            Console.WriteLine("yes {0}", evenProduct);
+//        }
+//        else
+//        {
+//            Console.WriteLine("no {0} {1}", oddProduct, evenProduct);
+//        }
+//    }
+//}
+//////////vtori kod!!!!//////////////
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//namespace _10.Odd_and_even_product
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            int n = int.Parse(Console.ReadLine());
+//            while (n < 4 || n > 50)
+//            {
+//                n = int.Parse(Console.ReadLine());
+//            }
+//            string[] arr = Console.ReadLine().Split(' ');
+//            int[] a = new int[n];
+//            for (int i = 0; i < n; i++)
+//            {
+//                a[i] = Convert.ToInt32(arr[i]);
+//            }
+//            long p1 = 1, p2 = 1;
+//            for (int i = 0; i < n; i++)
+//            {
+//                if (i % 2 == 0)
+//                {
+//                    p1 = p1 * a[i];
+//                }
+//                else
+//                {
+//                    p2 = p2 * a[i];
+//                }
+//            }
+//            if (p1 == p2)
+//                Console.WriteLine("yes {0}", p1);
+//            else
+//            {
+//                Console.WriteLine("no {0} {1}", p1, p2);
+//            }
+//        }
+//    }
+//}
