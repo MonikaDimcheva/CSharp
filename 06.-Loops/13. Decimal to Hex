@@ -1,0 +1,64 @@
+/*Using loops write a program that 
+converts an integer number to its hexadecimal
+representation.
+    The input is entered as long. 
+    The output should be a variable of type string.
+    Do not use the built-in .NET functionality.
+Input
+    On the first and only line you will
+    receive an integer in the decimal numeral system.
+Output
+    On the only output line write the 
+    hexadecimal representation of the read number.
+Constraints
+    All numbers will always be valid 64-bit integers.
+    Time limit: 0.1s
+    Memory limit: 16MB
+*/
+using System;
+
+class DecimalToHex
+{
+    static void Main(string[] args)
+    {
+        long decimalNumber = long.Parse(Console.ReadLine());
+        ToHexadecimal(decimalNumber);
+    }
+    static void ToHexadecimal(long decimalNumber)
+    {
+        if (decimalNumber == 0)
+            return;
+        else
+        {
+            long remainder = decimalNumber % 16;
+            decimalNumber = decimalNumber / 16;
+            ToHexadecimal(decimalNumber);
+            switch (remainder)
+            {
+                case 10:
+                    Console.Write("A");
+                    break;
+                case 11:
+                    Console.Write("B");
+                    break;
+                case 12:
+                    Console.Write("C");
+                    break;
+                case 13:
+                    Console.Write("D");
+                    break;
+                case 14:
+                    Console.Write("E");
+                    break;
+                case 15:
+                    Console.Write("F");
+                    break;
+                default:
+                    Console.Write(remainder);
+                    break;
+            }
+        }
+    }
+}
+
+
