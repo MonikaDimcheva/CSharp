@@ -1,0 +1,100 @@
+/*In combinatorics, the number of ways to choose N different 
+members out of a group of N different elements 
+(also known as the number of combinations) is 
+calculated by the following formula: formula 
+For example, there are 2598960 ways to withdraw 5
+cards out of a standard deck of 52 cards. 
+Your task is to write a program that 
+calculates N! / (K! * (N - K)!) for given N and K.
+    Try to use only two loops.
+Input
+    On the first line, there will be only one number - N
+    On the second line, there will also be only one number - K
+Output
+    On the only output line, write the result of the 
+calculation for the provided N and K
+Constraints
+    1 < K < N < 100
+        Hint: overflow is possible
+    Time limit: 0.1s
+    Memory limit: 16MB
+*/
+using System;
+using System.Numerics;
+
+class Calculate3Factorial
+{
+    static void Main(string[] args)
+    {
+        BigInteger firstNumber = BigInteger.Parse(Console.ReadLine());
+        ///bez proverkite 100/100/////////////////////////////////////////////////////////////////////////
+      //  while (firstNumber <= 1 || firstNumber >= 100)
+      //  {
+      //      firstNumber = BigInteger.Parse(Console.ReadLine());
+      //  }
+        BigInteger secondNumber = BigInteger.Parse(Console.ReadLine());
+       // while (secondNumber <= 1 || secondNumber >= firstNumber || secondNumber >= 100)
+       // {
+       //     secondNumber = BigInteger.Parse(Console.ReadLine());
+       // }
+        BigInteger factorialN = 1;
+        BigInteger difference = firstNumber - secondNumber;
+        BigInteger factorialNK = 1;
+        BigInteger sum = 1;
+
+        for (BigInteger count = secondNumber + 1; count <= firstNumber; count++)
+        {
+            factorialN *= count;
+        }
+        for (BigInteger count = 1; count <= difference; count++)
+        {
+            factorialNK *= count;
+        }
+
+        sum = ((factorialN) / (factorialNK));
+        Console.WriteLine(sum);
+    }
+}
+
+//////variant s 1 cikul
+//using System;
+//using System.Numerics;
+
+//class Calculate3Factorial
+//{
+//    static void Main(string[] args)
+//    {
+//        int firstNumber = int.Parse(Console.ReadLine());
+//        while (firstNumber <= 1 || firstNumber >= 100)
+//        {
+//            firstNumber = int.Parse(Console.ReadLine());
+//        }
+//        int secondNumber = int.Parse(Console.ReadLine());
+//        while (secondNumber <= 1 || secondNumber >= firstNumber || secondNumber >= 100)
+//        {
+//            secondNumber = int.Parse(Console.ReadLine());
+//        }
+
+//        BigInteger factorialN = 1;
+//        BigInteger factorialK = 1;
+//        int difference = firstNumber - secondNumber;
+//        BigInteger factorialNK = 1;
+
+//        BigInteger sum = 1;
+
+//        for (int count = 1; count <= firstNumber; count++)
+//        {
+//            factorialN *= count;
+//            if (count <= secondNumber)
+//            {
+//                factorialK *= count;
+//            }
+//            if (count <= difference)
+//            {
+//                factorialNK *= count;
+//            }
+//            sum = ((factorialN) / (factorialK * (factorialNK)));
+//        }
+//        Console.WriteLine((factorialN / (factorialK * factorialNK)));
+//    }
+//}
