@@ -1,0 +1,49 @@
+/*Write a program that, for a given two integer numbers N and x, 
+calculates the sum S = 1 + 1!/x + 2!/x2 + … + N!/xN.
+    Use only one loop. Print the result with 5 digits after the decimal point.
+Input
+    On the first line you will receive one number - N.
+    On the second line you will receive another number - x.
+Output
+    Output only one number - the sum of the sequence for the given N and x.
+Constraints
+    N will always be a valid integer between 2 and 20, inclusive.
+    X will always be a valid floating-point number between 0 and 100
+    X * N will always be less than 50
+    Time limit: 0.1s
+    Memory limit: 16MB
+*/
+using System;
+
+class Calculate
+{
+    static void Main(string[] args)
+    {
+        int firstNumber = int.Parse(Console.ReadLine());
+        //while (firstNumber <= 2 || firstNumber >= 20)
+        //{
+        //    firstNumber = int.Parse(Console.ReadLine());
+        //}
+        double secondNumber = double.Parse(Console.ReadLine());
+        //while (secondNumber < -100 || secondNumber > 100)
+        //{
+        //    secondNumber = double.Parse(Console.ReadLine());
+        //}
+        //while ((firstNumber * secondNumber) > 50)
+        //{
+        //    firstNumber = int.Parse(Console.ReadLine());
+        //    secondNumber = double.Parse(Console.ReadLine());
+        //}
+        int factorialN = 1;
+        double sum = 1;
+        double secondPowN = 0;
+        for (int i = 1; i <= firstNumber; i++)
+        {
+            factorialN *= i;
+            secondPowN = Math.Pow(secondNumber, i);
+            sum += (factorialN / secondPowN);
+        }
+        Console.WriteLine("{0:F5}", sum);
+    }
+}
+
