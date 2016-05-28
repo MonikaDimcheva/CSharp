@@ -1,0 +1,43 @@
+/*Using loops write a program that converts a
+binary integer number to its decimal form.
+    The input is entered as string. 
+    The output should be a variable of type long.
+    Do not use the built-in .NET functionality.
+Input
+    You will receive exactly one line containing
+    an integer number representation in binary
+Output
+    On the only output line write the decimal 
+    representation of the number
+Constraints
+    All input numbers will be valid 32-bit integers
+    Time limit: 0.1s
+    Memory limit: 16MB
+*/
+using System;
+
+class BinaryToDecimal
+{
+    static void Main(string[] args)
+    {
+        string number = Console.ReadLine();
+        int[] num = new int[100];
+        int p = 1;
+        int result = 0;
+        for (int count = 0; count < number.Length; count++)
+        {
+            if (number[count] == '0')
+                num[count] = 0;
+            else if (number[count] == '1')
+                num[count] = 1;
+        }
+        for (int count = number.Length - 1; count >= 0; count--)
+        {
+            result+= num[count] * p;
+            p*= 2;
+        }
+        Console.WriteLine(result);
+    }
+}
+
+
