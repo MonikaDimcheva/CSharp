@@ -1,0 +1,28 @@
+using System;
+using System.Numerics;
+
+class CatalanNumbers
+{
+    static void Main(string[] args)
+    {
+        BigInteger number = BigInteger.Parse(Console.ReadLine());
+        while (number < 0 || number > 100)
+        {
+            number = BigInteger.Parse(Console.ReadLine());
+        }
+        BigInteger factorielNX = 1;
+        BigInteger factorielN = 1;
+        BigInteger sum = 1;
+        for (BigInteger count = number + 2; count <= number * 2; count++)
+        {
+            factorielNX *= count;
+        }
+        for (BigInteger count = 1; count <= number; count++)
+        {
+            factorielN *= count;
+        }
+        sum = factorielNX / factorielN;
+        Console.WriteLine(sum);
+    }
+}
+
